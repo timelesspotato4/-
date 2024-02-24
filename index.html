@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wingdings Chatroom</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .chat-container {
+        width: 80%;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    .message {
+        margin-bottom: 10px;
+    }
+    .message .user {
+        font-weight: bold;
+        color: blue;
+    }
+    .message .text {
+        font-family: Wingdings;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    button {
+        padding: 10px 20px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: blue;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="chat-container" id="chat-container">
+    <!-- Messages will be added here dynamically -->
+</div>
+<input type="text" id="message-input" placeholder="Type your message...">
+<button onclick="sendMessage()">Send</button>
+
+<script>
+    function sendMessage() {
+        var messageInput = document.getElementById('message-input');
+        var message = messageInput.value;
+        var chatContainer = document.getElementById('chat-container');
+        var messageDiv = document.createElement('div');
+        messageDiv.className = 'message';
+        var userSpan = document.createElement('span');
+        userSpan.className = 'user';
+        userSpan.textContent = 'You:';
+        var textSpan = document.createElement('span');
+        textSpan.className = 'text';
+        textSpan.textContent = message;
+        messageDiv.appendChild(userSpan);
+        messageDiv.appendChild(textSpan);
+        chatContainer.appendChild(messageDiv);
+        messageInput.value = '';
+    }
+</script>
+</body>
+</html>
